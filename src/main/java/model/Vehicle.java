@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vehicle {
-  String make;
-  String model;
-  String year;
-  String mileage;
-  List<Bid> bids;
-  Boolean active;
 
-  public Vehicle(String make, String model, String year, String mileage){
+  private String id;
+  private String make;
+  private String model;
+  private String year;
+  private String mileage;
+  private List<Bid> bids;
+  private Boolean active;
+
+  public Vehicle(String id, String make, String model, String year, String mileage){
+    this.id = id;
     this.make = make;
     this.model = model;
     this.year = year;
@@ -64,21 +67,36 @@ public class Vehicle {
     this.bids.add(bid);
   }
 
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
 
   @Override
   public String toString(){
-    return "--------------------------------------- \n" +
-        "Make: " + make + "\n" +
-        "Model: " + model + "\n" +
-        "Year: " + year + "\n" +
-        "Mileage: " + mileage + "\n" +
-        "------------------------------------------\n" +
-        "Current Highest Bid: " + getHighestBid().getAmount() + "\n" +
-        "Number of bids: " + bids.size() ;
+    return "\n--------------------------------------- \n" +
+        "Catalogue Id: " + getId() + "\n" +
+        "Make: " + getMake() + "\n" +
+        "Model: " + getModel() + "\n" +
+        "Year: " + getYear() + "\n" +
+        "Mileage: " + getMileage() + "km \n" +
+        "Current Highest Bid: " + getHighestBidValue() + "\n" +
+        "Number of bids: " + getBids().size() + "\n";
   }
 
   public Bid getHighestBid(){
     return this.bids.get(bids.size() - 1);
+  }
+
+  public Double getHighestBidValue(){
+    if(getBids().size() > 0){
+      return getHighestBid().getAmount();
+    }
+    return 0d;
   }
 
 }

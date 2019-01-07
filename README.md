@@ -25,3 +25,9 @@ This is a coding challenge for software developer applicants applying through ht
  - [ ] Conforms to SOLID principles
  - [ ] Code is easily understood and communicative
  - [ ] Commit history is consistent, easy to follow and understand
+
+
+
+
+Search Class:
+Normally input validation begins on the front end, but in this case, no such this exists. So I've surrounded the integer searches with a NumberFormatException in case it fails to parse if there are letters entered
