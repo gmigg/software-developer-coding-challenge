@@ -51,6 +51,8 @@ So I tried to make the search methods to be close to be what you would expect fr
 I added some Unit tests, probably could have added more coverage but testing void menu methods with scanners isn't very easy.
 Given the primitive nature of Scanner, I will have missed some input validation. I'll try my best to catch crashables.
 
+While I don't have a choice, I don't like that there is Scanners are Printlns everywhere. It makes for messy and unclean code. It also make methods more difficult to test which is antoher issue.
+
 ##Running
 build: gradle build
 run: Auction is the application class. Run Auction.main()

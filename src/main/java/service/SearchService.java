@@ -102,10 +102,9 @@ public class SearchService {
     System.out.println("Enter Car Make/Manufacturer: ");
     String manufacturer = in.next();
     List<Vehicle> vehicles = getVehiclesByMake(manufacturer);
-    if(vehicles.size() == 0){
+    if (vehicles.size() == 0) {
       System.out.print("No Cars matching that make \n");
-    }
-    else {
+    } else {
       for (Vehicle vehicle : vehicles) {
         System.out.println(vehicle.toString());
       }
@@ -117,10 +116,9 @@ public class SearchService {
     System.out.println("Enter Car Model: ");
     String model = in.next();
     List<Vehicle> vehicles = getVehiclesByModel(model);
-    if(vehicles.size() == 0){
-      System.out.print("No Cars matching that make \n");
-    }
-    else {
+    if (vehicles.size() == 0) {
+      System.out.print("No Cars matching that model \n");
+    } else {
       for (Vehicle vehicle : vehicles) {
         System.out.println(vehicle.toString());
       }
@@ -132,10 +130,9 @@ public class SearchService {
     System.out.println("Enter Maximum Mileage: ");
     String mileage = in.next();
     List<Vehicle> vehicles = getVehiclesByMileage(mileage);
-    if(vehicles.size() == 0){
-      System.out.print("No Cars matching that make \n");
-    }
-    else {
+    if (vehicles.size() == 0) {
+      System.out.print("No Cars matching that mileage \n");
+    } else {
       for (Vehicle vehicle : vehicles) {
         System.out.println(vehicle.toString());
       }
@@ -147,10 +144,9 @@ public class SearchService {
     System.out.println("Enter Minimum Year: ");
     String year = in.next();
     List<Vehicle> vehicles = getVehiclesByYear(year);
-    if(vehicles.size() == 0){
-      System.out.print("No Cars matching that make \n");
-    }
-    else {
+    if (vehicles.size() == 0) {
+      System.out.print("No Cars matching that year \n");
+    } else {
       for (Vehicle vehicle : vehicles) {
         System.out.println(vehicle.toString());
       }
@@ -168,18 +164,29 @@ public class SearchService {
   private void makeBid() {
     System.out.println("\n To select a vehicle to bid for, enter Catalogue Number");
     int catalogueNumber = in.nextInt();
-    if(catalogueNumber > vehicles.size()) {
+    if (catalogueNumber > vehicles.size()) {
       System.out.println("Invalid Catalogue Number");
       return;
     }
     Vehicle vehicle = getVechicleById(Integer.toString(catalogueNumber));
     System.out.println(vehicle.toString());
     System.out.println("\n Your Bid:");
-    double bid = in.nextDouble();
-    if (bid <= vehicle.getHighestBidValue()) {
-      System.out.print("Bid Rejected, must be more than current highest bid \n");
+
+    String bid = in.next();
+    Double bidValue = 0d;
+
+    try {
+      bidValue = Double.parseDouble(bid);
+    } catch (NumberFormatException e) {
+      System.out.println("Invalid Value");
+      return;
+    }
+
+
+    if (bidValue > vehicle.getHighestBidValue()) {
+      getVechicleById(Integer.toString(catalogueNumber)).addBid(new Bid("1", bidValue));
     } else {
-      getVechicleById(Integer.toString(catalogueNumber)).addBid(new Bid("1", bid));
+      System.out.print("Bid Rejected, must be more than current highest bid \n");
     }
   }
 }

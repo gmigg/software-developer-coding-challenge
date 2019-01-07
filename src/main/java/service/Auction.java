@@ -32,7 +32,6 @@ public class Auction {
     System.out.println("Logged Out");
 
   }
-
 }
 
 
