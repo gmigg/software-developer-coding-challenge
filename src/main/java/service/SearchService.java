@@ -102,40 +102,60 @@ public class SearchService {
     System.out.println("Enter Car Make/Manufacturer: ");
     String manufacturer = in.next();
     List<Vehicle> vehicles = getVehiclesByMake(manufacturer);
-    for (Vehicle vehicle : vehicles) {
-      System.out.println(vehicle.toString());
+    if(vehicles.size() == 0){
+      System.out.print("No Cars matching that make \n");
     }
-    makeBid();
+    else {
+      for (Vehicle vehicle : vehicles) {
+        System.out.println(vehicle.toString());
+      }
+      makeBid();
+    }
   }
 
   private void displayByModel() {
     System.out.println("Enter Car Model: ");
     String model = in.next();
     List<Vehicle> vehicles = getVehiclesByModel(model);
-    for (Vehicle vehicle : vehicles) {
-      System.out.println(vehicle.toString());
+    if(vehicles.size() == 0){
+      System.out.print("No Cars matching that make \n");
     }
-    makeBid();
+    else {
+      for (Vehicle vehicle : vehicles) {
+        System.out.println(vehicle.toString());
+      }
+      makeBid();
+    }
   }
 
   private void displayByMileage() {
     System.out.println("Enter Maximum Mileage: ");
     String mileage = in.next();
     List<Vehicle> vehicles = getVehiclesByMileage(mileage);
-    for (Vehicle vehicle : vehicles) {
-      System.out.println(vehicle.toString());
+    if(vehicles.size() == 0){
+      System.out.print("No Cars matching that make \n");
     }
-    makeBid();
+    else {
+      for (Vehicle vehicle : vehicles) {
+        System.out.println(vehicle.toString());
+      }
+      makeBid();
+    }
   }
 
   private void displayByYear() {
     System.out.println("Enter Minimum Year: ");
     String year = in.next();
     List<Vehicle> vehicles = getVehiclesByYear(year);
-    for (Vehicle vehicle : vehicles) {
-      System.out.println(vehicle.toString());
+    if(vehicles.size() == 0){
+      System.out.print("No Cars matching that make \n");
     }
-    makeBid();
+    else {
+      for (Vehicle vehicle : vehicles) {
+        System.out.println(vehicle.toString());
+      }
+      makeBid();
+    }
   }
 
   private void displayAll() {
@@ -146,7 +166,7 @@ public class SearchService {
   }
 
   private void makeBid() {
-    System.out.println("\n To select a vehicle, enter Catalogue Number");
+    System.out.println("\n To select a vehicle to bid for, enter Catalogue Number");
     int catalogueNumber = in.nextInt();
     if(catalogueNumber > vehicles.size()) {
       System.out.println("Invalid Catalogue Number");

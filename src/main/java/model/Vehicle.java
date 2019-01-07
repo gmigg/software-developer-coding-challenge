@@ -85,7 +85,8 @@ public class Vehicle {
         "Year: " + getYear() + "\n" +
         "Mileage: " + getMileage() + "km \n" +
         "Current Highest Bid: " + getHighestBidValue() + "\n" +
-        "Number of bids: " + getBids().size() + "\n";
+        "Number of bids: " + getBids().size() + "\n" +
+        "Bid History: " + getBidHistory() ;
   }
 
   public Bid getHighestBid(){
@@ -97,6 +98,14 @@ public class Vehicle {
       return getHighestBid().getAmount();
     }
     return 0d;
+  }
+
+  private String getBidHistory(){
+    String bidHistory = "";
+    for(Bid bid: this.bids){
+      bidHistory= bidHistory + bid.getAmount() +  " ";
+    }
+    return bidHistory;
   }
 
 }
